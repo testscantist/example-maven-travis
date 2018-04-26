@@ -17,18 +17,19 @@ run_script() {
   # echo $TRAVIS_JDK_VERSION
   mvn -B dependency:tree
 }
+echo "------------------------------------"
+echo "run_script"
 
 run_script > depedency-tree-output.txt
-cat depedency-tree-output.txt
+
 # run script to extrac depedency tree info
 
-# upload to s3 endpoint
 
 #Log that the script download is complete and proceeding
-echo "Uploading report at $1"
+echo "Uploading report at $SCANTIST_IMPORT_URL"
 
 #Log the curl version used
-python --version
+python3 --version
 
 curl --version
 
