@@ -1,3 +1,4 @@
+#!/bin/bash
 # initialize parameters
 # identify pull request and push
 # prepare upload path, request url
