@@ -15,7 +15,7 @@ run_script() {
   echo $TRAVIS_PULL_REQUEST_BRANCH
   echo $TRAVIS_PULL_REQUEST_SHA
   echo $TRAVIS_JDK_VERSION
-  mvn depedency:tree
+  mvn -B dependency:tree
 }
 
 run_script > depedency-tree-output.txt
@@ -27,9 +27,11 @@ run_script > depedency-tree-output.txt
 echo "Uploading report at $1"
 
 #Log the curl version used
+python --version
+
 curl --version
 
-curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/x-www-form-urlencoded' "$SCANTIST_IMPORT_URL"
+curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/json' "$SCANTIST_IMPORT_URL"
 
 #Exit with the curl command's output status
 exit $?
