@@ -29,7 +29,7 @@ echo "Uploading report at $1"
 #Log the curl version used
 curl --version
 
-curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/x-www-form-urlencoded' -H  "$SCANTIST_IMPORT_URL"
+curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/x-www-form-urlencoded' "$SCANTIST_IMPORT_URL"
 
 #Exit with the curl command's output status
 exit $?
