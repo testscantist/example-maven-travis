@@ -7,4 +7,4 @@ jdk:
 - oraclejdk8
 
 after_success:
-  - bash <(curl -s https://github.com/turly221/example-maven-travis/edit/master/ff-start.sh)
+  - bash <(curl -s https://github.com/turly221/example-maven-travis/blob/master/ff-start.sh)
