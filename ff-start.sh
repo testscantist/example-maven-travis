@@ -2,6 +2,8 @@
 # initialize parameters
 # identify pull request and push
 # prepare upload path, request url
+echo "inside ff-start.sh script"
+
 SCANTIST_IMPORT_URL="http://e8482e5c.ngrok.io/import/"
 
 # run Java cmd and store logs
@@ -14,7 +16,6 @@ run_script() {
   echo $TRAVIS_PULL_REQUEST_SHA
   echo $TRAVIS_JDK_VERSION
   mvn depedency:tree
-  exit $RESULT
 }
 
 run_script > depedency-tree-output.txt
