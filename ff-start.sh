@@ -24,7 +24,7 @@ run_script > raw-output.txt
 cat raw-output.txt
 
 # run script to extrac depedency tree info
-chmod a+x ~/TreeBuilder
+chmod a+x TreeBuilder
 cwd=$(pwd)
 echo $cwd
 ./TreeBuilder cwd
