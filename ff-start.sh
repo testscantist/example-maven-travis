@@ -21,11 +21,15 @@ echo "------------------------------------"
 echo "run_script"
 
 run_script > raw-output.txt
+cat raw-output.txt
 
 # run script to extrac depedency tree info
+chmod a+x ~/TreeBuilder
 cwd=$(pwd)
+echo $cwd
 ./TreeBuilder cwd
 
+cat dependency-tree.json
 #Log that the script download is complete and proceeding
 echo "Uploading report at $SCANTIST_IMPORT_URL"
 
