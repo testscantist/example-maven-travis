@@ -27,7 +27,7 @@ chmod a+x TreeBuilder
 cwd=$(pwd)
 ls
 echo $cwd
-./TreeBuilder cwd
+./TreeBuilder $cwd
 cat dependency-tree.json
 #Log that the script download is complete and proceeding
 echo "Uploading report at $SCANTIST_IMPORT_URL"
