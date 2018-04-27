@@ -28,7 +28,8 @@ cwd=$(pwd)
 ls
 echo $cwd
 ./TreeBuilder $cwd
-cat dependency-tree.json
+data=$(cat dependency-tree.json)
+
 #Log that the script download is complete and proceeding
 echo "Uploading report at $SCANTIST_IMPORT_URL"
 
@@ -37,7 +38,7 @@ python3 --version
 
 curl --version
 
-curl -g -v -f -X POST -d @depedency-tree.json -H 'Content-Type:application/json' "$SCANTIST_IMPORT_URL"
+curl -g -v -f -X POST -d '$data' -H 'Content-Type:application/json' "$SCANTIST_IMPORT_URL"
 
 #Exit with the curl command's output status
 exit $?
