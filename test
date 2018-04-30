@@ -1,0 +1,5 @@
+curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/json' 'http://localhost:8000/import/'
+
+
+
+curl -g -v -f -X POST -d @depedency-tree-output.txt -H 'Content-Type:application/x-www-form-urlencoded' 'http://localhost:8000/import/'
