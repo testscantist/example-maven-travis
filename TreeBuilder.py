@@ -262,7 +262,7 @@ def main(args):
     repo_name = args[1]
     commit_sha = args[2]
     branch = args[3]
-    pull_request = args[4]
+    pull_request = False if args[4] == "false" else True
     build_time = args[5]
 
     project = initialize_project(current_path)

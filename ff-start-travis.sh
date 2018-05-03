@@ -25,10 +25,13 @@ commit_sha=$TRAVIS_COMMIT
 branch=$TRAVIS_BRANCH
 pull_request=$TRAVIS_PULL_REQUEST
 build_time=$(date +"%s")
-
-ls
-
 cwd=$(pwd)
+
+echo $repo_name
+echo $commit_sha
+echo $branch
+echo $pull_request
+echo $build_time
 echo $cwd
 
 pyenv versions
