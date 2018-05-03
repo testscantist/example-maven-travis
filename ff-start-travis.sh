@@ -20,9 +20,6 @@ show_project_info() {
 echo "=================show_project_info================="
 show_project_info
 
-$repo_name=$TRAVIS_REPO_SLUG
-$commit_sha=$TRAVIS_COMMIT
-
 ls
 
 cwd=$(pwd)
@@ -32,7 +29,7 @@ pyenv versions
 
 pyenv global 3.6.3
 
-python TreeBuilder.py $cwd $repo_name $commit_sha
+python TreeBuilder.py $cwd $TRAVIS_REPO_SLUG $TRAVIS_COMMIT
 
 #Log that the script download is complete and proceeding
 echo "Uploading report at $SCANTIST_IMPORT_URL"
