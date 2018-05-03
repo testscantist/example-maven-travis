@@ -255,7 +255,11 @@ class Project(object):
         return hash(self.id)
 
 
-def main(current_path):
+def main(args):
+    current_path = args[0]
+    repo_name = args[1]
+    commit_sha = args[2]
+
     project = initialize_project(current_path[0])
     if project is None:
         print("cannot find project")
@@ -276,6 +280,8 @@ def main(current_path):
         tree = TreeBuilder(data_file, root_name, starting_line,
                            ending_line, package_manager).build()
         tree_data = tree.buildWithChildrenToDict(False)
+        tree_data['repo_name'] = repo_name
+        tree_data['commit_sha'] = commit_sha
 
         with open('dependency-tree.json', 'w') as outfile:
             json.dump(tree_data, outfile)

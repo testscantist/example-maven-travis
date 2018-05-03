@@ -10,7 +10,6 @@ show_project_info() {
   echo "TRAVIS_EVENT_TYPE $TRAVIS_EVENT_TYPE"
   echo "TRAVIS_BRANCH $TRAVIS_BRANCH"
   echo "TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG"
-  echo "TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG"
   echo "TRAVIS_PULL_REQUEST_SLUG $TRAVIS_PULL_REQUEST_SLUG"
   echo "TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST"
   echo "TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH"
@@ -21,6 +20,9 @@ show_project_info() {
 echo "=================show_project_info================="
 show_project_info
 
+$repo_name=$TRAVIS_REPO_SLUG
+$commit_sha=$TRAVIS_COMMIT
+
 ls
 
 cwd=$(pwd)
@@ -30,7 +32,7 @@ pyenv versions
 
 pyenv global 3.6.3
 
-python TreeBuilder.py $cwd
+python TreeBuilder.py $cwd $repo_name $commit_sha
 
 #Log that the script download is complete and proceeding
 echo "Uploading report at $SCANTIST_IMPORT_URL"
