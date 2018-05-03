@@ -106,10 +106,10 @@ class Node:
             "artifact_id": key_values[1],
             "version": key_values[version_index],
             "level": self.level,
-            "children": []
+            "dependencies": []
         }
         for child in self.children:
-            result["children"].append(
+            result["dependencies"].append(
                 child.buildWithChildrenToDict(tabulate, package_manager))
         return result
 
@@ -230,7 +230,7 @@ class Project(object):
                 self.artifact_id + DEPENDENCY_CONNECTOR + \
                 JAVA_COMPILE + DEPENDENCY_CONNECTOR + self.version
         if self.package_manager == GRADLE_PACKAGE_MANAGER:
-            return GRADLE_LOG_PREFIX+self.group_id + DEPENDENCY_CONNECTOR + \
+            return GRADLE_LOG_PREFIX + self.group_id + DEPENDENCY_CONNECTOR + \
                 DEPENDENCY_CONNECTOR + self.version
 
     def get_starting_line(self):
@@ -261,6 +261,9 @@ def main(args):
     current_path = args[0]
     repo_name = args[1]
     commit_sha = args[2]
+    branch = args[3]
+    pull_request = args[4]
+    build_time = args[5]
 
     project = initialize_project(current_path)
     if project is None:
@@ -281,9 +284,15 @@ def main(args):
         data_file = TRAVIS_LOG_FILE
         tree = TreeBuilder(data_file, root_name, starting_line,
                            ending_line, package_manager).build()
-        tree_data = tree.buildWithChildrenToDict(False)
-        tree_data['repo_name'] = repo_name
-        tree_data['commit_sha'] = commit_sha
+        tree_data = {
+            'repo_name': repo_name,
+            'branch': branch,
+            'commit_sha': commit_sha,
+            'package_manager': package_manager,
+            'pull_request': pull_request,
+            'build_time': build_time
+        }
+        tree_data.update(tree.buildWithChildrenToDict(False))
 
         with open('dependency-tree.json', 'w') as outfile:
             json.dump(tree_data, outfile)
@@ -338,9 +347,9 @@ def get_project_from_pom(pom_path):
 def get_project_from_gradle(gradle_path):
     # pom = XMLParser.parse(gradle_path)
     # root = pom.getroot()
-    group_id = "com.test.name"
-    artifact_id = None
-    version = "0.1.0.snapshot"
+    group_id = ""
+    artifact_id = ""
+    version = ""
     package_manager = GRADLE_PACKAGE_MANAGER
     config_mode = GRADLE_CONFIG_MODE
     packaging = JAVA_COMPILE
