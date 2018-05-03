@@ -13,4 +13,4 @@ after_success:
   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
 ```
 
-get a log
+test pull request number
