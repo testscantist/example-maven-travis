@@ -262,7 +262,7 @@ def main(args):
     repo_name = args[1]
     commit_sha = args[2]
 
-    project = initialize_project(current_path[0])
+    project = initialize_project(current_path)
     if project is None:
         print("cannot find project")
         return
