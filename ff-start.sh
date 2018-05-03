@@ -22,6 +22,10 @@ SCANTIST_IMPORT_URL="http://e8482e5c.ngrok.io/import/"
 
 # run_script > raw-output.txt
 
+pyenv versions
+
+python3 -V
+
 # run script to extrac depedency tree info
 chmod a+x TreeBuilder
 cwd=$(pwd)
