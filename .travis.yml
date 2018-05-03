@@ -7,4 +7,4 @@ jdk:
 - oraclejdk8
 
 after_success:
-  - bash ff-start.sh
+  - bash ff-start-travis.sh
