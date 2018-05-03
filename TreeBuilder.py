@@ -256,6 +256,8 @@ class Project(object):
 
 
 def main(args):
+    print('-----------------inside TreeBuilder--------------------')
+    print(args)
     current_path = args[0]
     repo_name = args[1]
     commit_sha = args[2]
