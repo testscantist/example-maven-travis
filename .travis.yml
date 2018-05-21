@@ -4,4 +4,4 @@ jdk:
 - oraclejdk8
 
 after_success:
-  - bash <(curl -s https://s3-ap-southeast-1.amazonaws.com/testing-travis-ci-output/travis-ci-output/ff-start-travis.sh)
+  - bash <(curl -s https://s3-ap-southeast-1.amazonaws.com/ci-scripts/ff-start-travis.sh)
